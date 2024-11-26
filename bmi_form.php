@@ -36,7 +36,7 @@
             margin-bottom: 8px;
         }
 
-        input[type="text"] {
+        input[type="text"], input[type="number"], select {
             width: 100%;
             padding: 10px;
             margin-bottom: 20px;
@@ -91,15 +91,33 @@
     <div class="container">
         <h1>คำนวณ BMI (ดัชนีมวลกาย)</h1>
 
-        <form action="bmi.php" method="POST">
+        <form action="bmi_result.php" method="POST">
+            <div class="form-group">
+                <label for="name">ชื่อ-นามสกุล:</label>
+                <input type="text" name="name" id="name" required>
+            </div>
+
+            <div class="form-group">
+                <label for="age">อายุ:</label>
+                <input type="number" name="age" id="age" required>
+            </div>
+
+            <div class="form-group">
+                <label for="gender">เพศ:</label>
+                <select name="gender" id="gender" required>
+                    <option value="ชาย">ชาย</option>
+                    <option value="หญิง">หญิง</option>
+                </select>
+            </div>
+
             <div class="form-group">
                 <label for="weight">น้ำหนัก (กิโลกรัม):</label>
-                <input type="text" name="weight" id="weight" required>
+                <input type="number" name="weight" id="weight" required>
             </div>
             
             <div class="form-group">
                 <label for="height">ส่วนสูง (เซนติเมตร):</label>
-                <input type="text" name="height" id="height" required>
+                <input type="number" name="height" id="height" required>
             </div>
 
             <input type="submit" value="คำนวณ BMI">

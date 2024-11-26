@@ -103,14 +103,24 @@
         <?php
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
-            $weight = $_POST['weight']; // น้ำหนัก (กิโลกรัม)
-            $height = $_POST['height']; // ส่วนสูง (เซนติเมตร)
+            // รับค่าจากฟอร์ม
+            $name = $_POST['name'];
+            $age = $_POST['age'];
+            $gender = $_POST['gender'];
+            $weight = $_POST['weight'];
+            $height = $_POST['height'];
 
-            $heightInMeters = $height / 100;  // แปลงส่วนสูงเป็นเมตร
+            // แปลงส่วนสูงเป็นเมตร
+            $heightInMeters = $height / 100;
 
-            $bmi = $weight / ($heightInMeters * $heightInMeters);  // คำนวณ BMI
+            // คำนวณ BMI
+            $bmi = $weight / ($heightInMeters * $heightInMeters);
 
+            // แสดงผล
             echo "<div class='result'>";
+            echo "<h3>ชื่อ-นามสกุล: $name</h3>";
+            echo "<h3>อายุ: $age ปี</h3>";
+            echo "<h3>เพศ: $gender</h3>";
             echo "<h3>น้ำหนัก: $weight กิโลกรัม</h3>";
             echo "<h3>ส่วนสูง: $height เซนติเมตร</h3>";
             echo "<h3>BMI: " . number_format($bmi, 2) . "</h3>";

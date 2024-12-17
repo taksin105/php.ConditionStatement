@@ -102,37 +102,36 @@
 
         <?php
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+            $firstName = $_POST['firstName']; // ชื่อ
+            $lastName = $_POST['lastName']; // นามสกุล
+            $age = $_POST['age']; // อายุ
+            $weight = $_POST['weight']; // น้ำหนัก (กิโลกรัม)
+            $height = $_POST['height']; // ส่วนสูง (เซนติเมตร)
 
-            // รับค่าจากฟอร์ม
-            $name = $_POST['name'];
-            $age = $_POST['age'];
-            $gender = $_POST['gender'];
-            $weight = $_POST['weight'];
-            $height = $_POST['height'];
+            $heightInMeters = $height / 100;  // แปลงส่วนสูงเป็นเมตร
+            $bmi = $weight / ($heightInMeters * $heightInMeters);  // คำนวณ BMI
 
-            // แปลงส่วนสูงเป็นเมตร
-            $heightInMeters = $height / 100;
-
-            // คำนวณ BMI
-            $bmi = $weight / ($heightInMeters * $heightInMeters);
-
-            // แสดงผล
             echo "<div class='result'>";
-            echo "<h3>ชื่อ-นามสกุล: $name</h3>";
-            echo "<h3>อายุ: $age ปี</h3>";
-            echo "<h3>เพศ: $gender</h3>";
-            echo "<h3>น้ำหนัก: $weight กิโลกรัม</h3>";
-            echo "<h3>ส่วนสูง: $height เซนติเมตร</h3>";
-            echo "<h3>BMI: " . number_format($bmi, 2) . "</h3>";
+            echo "<h3>ข้อมูลผู้ใช้</h3>";
+            echo "<p>ชื่อ: $firstName $lastName</p>";
+            echo "<p>อายุ: $age ปี</p>";
+            echo "<h3>ผลลัพธ์</h3>";
+            echo "<p>น้ำหนัก: $weight กิโลกรัม</p>";
+            echo "<p>ส่วนสูง: $height เซนติเมตร</p>";
+            echo "<p>BMI: " . number_format($bmi, 2) . "</p>";
 
             if ($bmi < 18.5) {
                 echo "<p class='bmi-category bmi-category-underweight'>ผลการประเมิน: น้ำหนักน้อยกว่ามาตรฐาน</p>";
+                echo "<p>คำแนะนำ: คุณควรเพิ่มน้ำหนักและรับประทานอาหารที่มีประโยชน์ รวมถึงออกกำลังกายเพื่อสร้างกล้ามเนื้อ</p>";
             } elseif ($bmi >= 18.5 && $bmi < 24.9) {
                 echo "<p class='bmi-category bmi-category-normal'>ผลการประเมิน: น้ำหนักปกติ</p>";
+                echo "<p>คำแนะนำ: รักษาน้ำหนักให้อยู่ในช่วงนี้ด้วยการรับประทานอาหารครบ 5 หมู่และออกกำลังกายอย่างสม่ำเสมอ</p>";
             } elseif ($bmi >= 25 && $bmi < 29.9) {
                 echo "<p class='bmi-category bmi-category-overweight'>ผลการประเมิน: น้ำหนักเกิน</p>";
+                echo "<p>คำแนะนำ: ลดปริมาณแป้งและน้ำตาล รวมถึงออกกำลังกายเพื่อควบคุมน้ำหนัก</p>";
             } else {
                 echo "<p class='bmi-category bmi-category-obese'>ผลการประเมิน: โรคอ้วน</p>";
+                echo "<p>คำแนะนำ: ควรปรึกษาแพทย์เพื่อวางแผนลดน้ำหนักและปรับเปลี่ยนวิถีชีวิต</p>";
             }
 
             echo "</div>";

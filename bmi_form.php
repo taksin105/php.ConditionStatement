@@ -36,7 +36,7 @@
             margin-bottom: 8px;
         }
 
-        input[type="text"], input[type="number"], select {
+        input[type="text"] {
             width: 100%;
             padding: 10px;
             margin-bottom: 20px;
@@ -62,27 +62,9 @@
             background-color: #45a049;
         }
 
-        .form-group {
-            display: flex;
-            justify-content: space-between;
-        }
-
-        .form-group input {
-            width: 48%;
-        }
-
         .form-footer {
             text-align: center;
             margin-top: 20px;
-        }
-
-        .form-footer a {
-            color: #4CAF50;
-            text-decoration: none;
-        }
-
-        .form-footer a:hover {
-            text-decoration: underline;
         }
     </style>
 </head>
@@ -91,42 +73,27 @@
     <div class="container">
         <h1>คำนวณ BMI (ดัชนีมวลกาย)</h1>
 
-        <form action="bmi_result.php" method="POST">
-            <div class="form-group">
-                <label for="name">ชื่อ-นามสกุล:</label>
-                <input type="text" name="name" id="name" required>
-            </div>
+        <form action="bmi.php" method="POST">
+            <label for="firstName">ชื่อ:</label>
+            <input type="text" id="firstName" name="firstName" required>
 
-            <div class="form-group">
-                <label for="age">อายุ:</label>
-                <input type="number" name="age" id="age" required>
-            </div>
+            <label for="lastName">นามสกุล:</label>
+            <input type="text" id="lastName" name="lastName" required>
 
-            <div class="form-group">
-                <label for="gender">เพศ:</label>
-                <select name="gender" id="gender" required>
-                    <option value="ชาย">ชาย</option>
-                    <option value="หญิง">หญิง</option>
-                </select>
-            </div>
+            <label for="age">อายุ (ปี):</label>
+            <input type="text" id="age" name="age" required>
 
-            <div class="form-group">
-                <label for="weight">น้ำหนัก (กิโลกรัม):</label>
-                <input type="number" name="weight" id="weight" required>
-            </div>
-            
-            <div class="form-group">
-                <label for="height">ส่วนสูง (เซนติเมตร):</label>
-                <input type="number" name="height" id="height" required>
-            </div>
+            <label for="weight">น้ำหนัก (กิโลกรัม):</label>
+            <input type="text" id="weight" name="weight" required>
 
-            <input type="submit" value="คำนวณ BMI">
-            <input type="reset" value="ล้างข้อมูล">
+            <label for="height">ส่วนสูง (เซนติเมตร):</label>
+            <input type="text" id="height" name="height" required>
+
+            <div style="display: flex; justify-content: space-between;">
+                <input type="submit" value="คำนวณ BMI">
+                <input type="reset" value="ล้างข้อมูล">
+            </div>
         </form>
-
-        <div class="form-footer">
-            <p>การคำนวณ BMI เพื่อประเมินดัชนีมวลกายของคุณ</p>
-        </div>
     </div>
 
 </body>

@@ -127,7 +127,7 @@
             $age = $_POST['age']; // อายุ
             $weight = $_POST['weight']; // น้ำหนัก (กิโลกรัม)
             $height = $_POST['height']; // ส่วนสูง (เซนติเมตร)
-
+            // hello
             // คำนวณ BMI
             $bmi = calculateBMI($weight, $height);
 
@@ -154,6 +154,6 @@
             <a href="bmi_form.php">กลับไปหน้าหลัก</a>
         </div>
     </div>
-
+ 
 </body>
 </html>
